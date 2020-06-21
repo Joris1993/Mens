@@ -28,6 +28,6 @@ class Persoon {
             Console.WriteLine($"Dit doet erg pijn bij {persoon.Name}");
     }
 }
-
+// ff git testen
 enum PikGrootte { Mini, Klein, Normaal, Groot, Neger }
 

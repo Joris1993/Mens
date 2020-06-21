@@ -2,16 +2,40 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using Geslachtsdeel;
 
-class Persoon {
-    public Persoon(string n, string g, PikGrootte pg, Persoon wsm) 
+partial class Persoon {
+    public Persoon(string n, string g, Geslacht geslacht, Persoon wsm) 
     {
+
         Name = n;
         Geaardheid = g;
         PikGrootte = pg;
         WiltSeksMet = wsm;
+
+        switch (geslacht) 
+        {
+            case Man : 
+            {
+                NeukGereedschap = new Pik();
+                break;
+            }
+            case Vrouw :
+            {
+                NeukGereedschap = new Kut();
+                break;
+            }
+            case Anders :
+            {
+                // gooit error, behalve als de persoon 'Angelo' heet
+                break;
+            }
+        }
+
     }
 
+    Geslacht Sex;
+    Geslachtsdeel NeukGereedschap;
     String Name;
     String Geaardheid;
     PikGrootte PikGrootte;
@@ -29,5 +53,6 @@ class Persoon {
     }
 }
 
-enum PikGrootte { Mini, Klein, Normaal, Groot, Neger }
+
+
 

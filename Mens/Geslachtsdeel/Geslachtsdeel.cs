@@ -1,11 +1,12 @@
-
-partial class Geslachtsdeel
+class Geslachtsdeel
 {
-    public Geslachtsdeel(Type t)
+    public Geslachtsdeel(GeslachtsdeelType t)
     {
         Soort = t;
     }
+ 
+    GeslachtsdeelType Soort;
 
-    
-    Type Soort;
+    public virtual PikGrootte PikGrootte { get; set; }
+    public virtual KutDiepte KutDiepte { get; set; }
 }

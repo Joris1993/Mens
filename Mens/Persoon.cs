@@ -2,30 +2,29 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Geslachtsdeel;
 
-partial class Persoon {
-    public Persoon(string n, string g, Geslacht geslacht, Persoon wsm) 
+class Persoon {
+    public Persoon(string n, string g, Geslacht geslacht, GeslachtsdeelType gt, Persoon wsm) 
     {
 
         Name = n;
         Geaardheid = g;
-        PikGrootte = pg;
+        Sex = geslacht;
         WiltSeksMet = wsm;
 
         switch (geslacht) 
         {
-            case Man : 
+            case Geslacht.Man : 
             {
-                NeukGereedschap = new Pik();
+                NeukGereedschap = new Pik(gt);
                 break;
             }
-            case Vrouw :
+            case Geslacht.Vrouw :
             {
-                NeukGereedschap = new Kut();
+                NeukGereedschap = new Kut(gt);
                 break;
             }
-            case Anders :
+            case Geslacht.Anders :
             {
                 // gooit error, behalve als de persoon 'Angelo' heet
                 break;
@@ -38,7 +37,6 @@ partial class Persoon {
     Geslachtsdeel NeukGereedschap;
     String Name;
     String Geaardheid;
-    PikGrootte PikGrootte;
     Persoon WiltSeksMet;
 
     public void Knallen (Persoon persoon)
@@ -48,7 +46,7 @@ partial class Persoon {
         else
             Console.WriteLine($"{this.Name} neukt {persoon.Name}, zonder enige passie");
 
-        if (this.PikGrootte == PikGrootte.Neger)
+        if (this.NeukGereedschap.PikGrootte == PikGrootte.Neger)
             Console.WriteLine($"Dit doet erg pijn bij {persoon.Name}");
     }
 }
